@@ -28,12 +28,14 @@ def toss_coin(n):
             outcome_1_count += 1
         mean = outcome_1_count / outcome_no
         chart.add_rows([mean])
-        time.sleep(0.05)
+        time.sleep(0.03)
 
     return mean
 
-number_of_trials = st.slider('Select the number of trials to run.', 1, 5000, 10)
-start_button = st.button('Run')
+# Responsive form for inputs
+with st.form(key='my_form'):
+    number_of_trials = st.slider('Select the number of trials to run.', 1, 5000, 10)
+    start_button = st.form_submit_button('Run')
 
 if start_button:
     st.write(f'Running the experiment of {number_of_trials} trials.')
@@ -50,4 +52,6 @@ if start_button:
     st.session_state['df_experiment_results'] = \
     st.session_state['df_experiment_results'].reset_index(drop=True)
 
-st.write(st.session_state['df_experiment_results'])
+# Displaying the DataFrame in a more mobile-friendly way
+st.dataframe(st.session_state['df_experiment_results'].style.set_table_styles(
+    [{'selector': 'table', 'props': [('width', '100%'), ('fontSize', '12px')]}]))
