@@ -32,7 +32,7 @@ git clone https://github.com/natalie-cullings/random-coin-flip-app
 
 2. Navigate to the project directory in terminal:
 
-cd <PATH TO DIRECTORY HERE> random-coin-flip-app
+cd <PATH TO DIRECTORY HERE>
 
 3. Install the required Python libraries by running the following command in terminal:
 
